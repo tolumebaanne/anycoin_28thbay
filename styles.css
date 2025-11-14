@@ -1,0 +1,512 @@
+/*
+================================================================================
+   AnywhereCoin - Main Stylesheet
+   
+   Creator: Toluwalase Mebaanne
+   Company: 28th Bay Digital
+   
+   STYLESHEET ARCHITECTURE:
+   - CSS Custom Properties for consistent theming
+   - Component-based organization with clear section boundaries  
+   - Mobile-first responsive design patterns
+   - Performance-optimized selectors and minimal specificity
+   - Accessibility-compliant color contrast and interaction states
+   
+   BROWSER COMPATIBILITY:
+   - Modern browsers supporting CSS Grid, Flexbox, and Custom Properties
+   - Progressive enhancement for older browser graceful degradation
+   - Tested across Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
+   
+   Copyright © 2025 Toluwalase Mebaanne / 28th Bay Digital
+================================================================================
+*/
+
+/* ===============================================================================
+   DESIGN SYSTEM FOUNDATION
+   =============================================================================== */
+:root {
+  --day-bg: #ffffff;
+  --day-text: #0b0b0c;
+  --brand-grad: linear-gradient(135deg,#0d6efd,#6f42c1);
+}
+
+[data-theme="day"] { 
+  background-color: var(--day-bg); 
+  color: var(--day-text); 
+}
+
+/* ===============================================================================
+   GLOBAL BASE STYLES
+   =============================================================================== */
+body { 
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; 
+  line-height: 1.5; 
+}
+
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.brand-dot { 
+  width: 20px; 
+  height: 20px; 
+  background: var(--brand-grad); 
+}
+
+/* ===============================================================================
+   HERO SECTION LAYOUT
+   =============================================================================== */
+.hero { 
+  min-height: 80vh; 
+  display: flex; 
+  align-items: center; 
+  position: relative; 
+}
+
+.hero-sub { max-width: 48rem; }
+
+.hero-illustration { 
+  height: 300px; 
+  background: #e9ecef; 
+}
+
+.hero-blob { 
+  position: absolute; 
+  bottom: -60px; 
+  right: -60px; 
+  width: 320px; 
+  height: 320px; 
+  background: var(--brand-grad); 
+  opacity: .08; 
+  border-radius: 50%; 
+}
+
+.hero-blob-top {
+  position: absolute;
+  top: -180px;
+  left: -180px;
+  width: 800px;
+  height: 800px;
+  background: var(--brand-grad);
+  opacity: .08;
+  border-radius: 50%;
+}
+
+/* ===============================================================================
+   CRYPTOCURRENCY CAROUSEL SECTION
+   =============================================================================== */
+#crypto-carousel {
+  background: #f8f9fa;
+  min-height: 70vh;
+  padding: 4rem 0;
+  position: relative;
+}
+
+#crypto-carousel h2 {
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+#crypto-carousel .carousel-item {
+  padding: 2rem 0;
+}
+
+#crypto-carousel .carousel-item h4 {
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 1.75rem;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+}
+
+#crypto-carousel .carousel-item p {
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: #64748b;
+  margin-bottom: 2.5rem;
+}
+
+#crypto-carousel .card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#crypto-carousel .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+#crypto-carousel .card-body strong {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* ===============================================================================
+   CRYPTOCURRENCY NEWS SECTION
+   =============================================================================== */
+#crypto-news {
+  background: #ffffff;
+  min-height: 60vh;
+  padding: 5rem 0;
+  display: flex;
+  align-items: center;
+}
+
+#crypto-news h2 {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.news-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+}
+
+.news-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.news-meta {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+/* ===============================================================================
+   DATA REFRESH CONTROL BUTTON
+   =============================================================================== */
+#refreshBtn {
+  height: calc(2.375rem + 2px);
+  width: calc(2.375rem + 2px);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 0.375rem;
+  position: relative;
+}
+
+#refreshBtn i {
+  font-size: 1rem;
+}
+
+#refreshBtn:hover::after {
+  content: "Refresh";
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* Currency control alignment optimization */
+.d-flex.align-items-center.gap-2 {
+  align-items: stretch;
+}
+
+#currencySelect {
+  min-width: 85px;
+}
+
+/* ===============================================================================
+   TRENDING SECTION SIDEBAR LAYOUT
+   =============================================================================== */
+aside .card.shadow-sm.mb-3 {
+  margin-top: 3.75rem;
+  height: calc(100vh - 280px);
+  display: flex;
+  flex-direction: column;
+}
+
+aside .card.shadow-sm.mb-3 .card-body {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* ===============================================================================
+   INTERACTIVE SMART ACTION BUTTONS
+   =============================================================================== */
+.trending-smart-buttons {
+  padding: 0.75rem;
+  border-top: 1px solid #e2e8f0;
+  background: #f8f9fa;
+}
+
+.smart-btn {
+  aspect-ratio: 1 / 1;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1.5px solid #d1d5db;
+  background: white;
+  color: #374151;
+  min-height: 60px;
+}
+
+.smart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.smart-btn i {
+  font-size: 1.1rem;
+  margin-bottom: 0.125rem;
+}
+
+.smart-btn span {
+  font-size: 0.65rem;
+  line-height: 1.1;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Market performance button variations */
+.smart-btn[data-smart="gainers"] {
+  border-color: #10b981;
+  color: #047857;
+}
+
+.smart-btn[data-smart="gainers"]:hover {
+  background: #ecfdf5;
+  border-color: #059669;
+  color: #065f46;
+}
+
+.smart-btn[data-smart="losers"] {
+  border-color: #f59e0b;
+  color: #d97706;
+}
+
+.smart-btn[data-smart="losers"]:hover {
+  background: #fffbeb;
+  border-color: #d97706;
+  color: #b45309;
+}
+
+.smart-btn[data-smart="volume"] {
+  border-color: #3b82f6;
+  color: #1d4ed8;
+}
+
+.smart-btn[data-smart="volume"]:hover {
+  background: #eff6ff;
+  border-color: #2563eb;
+  color: #1e40af;
+}
+
+/* ===============================================================================
+   MARKET DATA TABLE HEADERS
+   =============================================================================== */
+.table thead th {
+  background: #f1f3f4 !important;
+  color: #374151 !important;
+  font-weight: 600 !important;
+  border-bottom: 2px solid #d1d5db !important;
+  padding: 1rem 0.75rem !important;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.table thead th:hover {
+  background: #e5e7eb !important;
+  color: #1f2937 !important;
+}
+
+/* Sortable column indicators */
+.table thead th[data-sort="asc"]::after {
+  content: " ↑";
+  color: #3b82f6;
+  font-weight: bold;
+  margin-left: 0.25rem;
+}
+
+.table thead th[data-sort="desc"]::after {
+  content: " ↓";
+  color: #3b82f6;
+  font-weight: bold;
+  margin-left: 0.25rem;
+}
+
+/* ===============================================================================
+   MARKET DATA TABLE CONTAINER
+   =============================================================================== */
+.table-responsive {
+  max-height: calc(100vh + 0px);
+  overflow-y: auto;
+}
+
+/* ===============================================================================
+   TRENDING CRYPTOCURRENCIES PANEL
+   =============================================================================== */
+#trendingBox { 
+  overflow: auto;
+  flex: 1;
+}
+
+/* ===============================================================================
+   EDUCATIONAL CONTENT SECTION
+   =============================================================================== */
+#learn .col-md-6 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#learn .col-md-6 > div {
+  aspect-ratio: 1 / 1;
+  max-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: .5rem;
+  transition: transform .2s ease, box-shadow .2s ease;
+  width: 100%;
+}
+
+#learn .col-md-6 > div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 .75rem 1.25rem rgba(0,0,0,.08);
+}
+
+/* ===============================================================================
+   USER INTERFACE NOTIFICATIONS
+   =============================================================================== */
+.toast-message {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  background: #000;
+  color: #fff;
+  padding: .6rem 1rem;
+  border-radius: .5rem;
+  opacity: .92;
+  z-index: 2000;
+  font-size: .875rem;
+}
+
+.modal-content { 
+  border-radius: .75rem; 
+}
+
+.modal-footer { 
+  border-top: none; 
+}
+
+/* ===============================================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   =============================================================================== */
+
+/* Large desktop screens (992px and up) */
+@media (min-width: 992px) {
+  #learn .container { 
+    padding-left: 2rem; 
+    padding-right: 2rem; 
+  }
+}
+
+/* Tablet and small desktop screens (992px and down) */
+@media (max-width: 992px) {
+  aside .card.shadow-sm.mb-3 {
+    margin-top: 2.5rem;
+    height: calc(100vh - 320px);
+  }
+}
+
+/* Mobile and small tablet screens (768px and down) */
+@media (max-width: 767.98px) {
+  .hero { 
+    min-height: auto; 
+    padding: 3.5rem 0; 
+  }
+  
+  .hero-illustration { 
+    height: 200px; 
+  }
+  
+  .table-responsive { 
+    max-height: calc(100vh - 350px); 
+  }
+  
+  #refreshBtn { 
+    height: calc(2.25rem + 2px); 
+    width: calc(2.25rem + 2px); 
+  }
+  
+  #refreshBtn i { 
+    font-size: 0.9rem; 
+  }
+  
+  .trending-smart-buttons {
+    padding: 0.5rem;
+  }
+  
+  .smart-btn {
+    padding: 0.375rem;
+    min-height: 50px;
+  }
+  
+  .smart-btn i {
+    font-size: 1rem;
+  }
+  
+  .smart-btn span {
+    font-size: 0.6rem;
+  }
+  
+  aside .card.shadow-sm.mb-3 {
+    margin-top: 2rem;
+    height: auto;
+    min-height: 400px;
+  }
+  
+  .table thead th {
+    padding: 0.75rem 0.5rem !important;
+    font-size: 0.8rem;
+  }
+}
+
+/* Small mobile screens (480px and down) */
+@media (max-width: 480px) {
+  #refreshBtn { 
+    height: calc(2rem + 2px); 
+    width: calc(2rem + 2px); 
+  }
+  
+  #refreshBtn i { 
+    font-size: 0.85rem; 
+  }
+  
+  .smart-btn {
+    min-height: 45px;
+    padding: 0.25rem;
+  }
+  
+  .smart-btn i {
+    font-size: 0.9rem;
+  }
+  
+  .smart-btn span {
+    font-size: 0.55rem;
+  }
+}

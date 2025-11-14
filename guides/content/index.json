@@ -1,0 +1,202 @@
+[
+  {
+    "id": "bitcoin-basics",
+    "title": "Bitcoin Basics",
+    "difficulty": "Beginner",
+    "icon": "bi-currency-bitcoin",
+    "readTime": "5 min",
+    "popular": true,
+    "excerpt": "Learn what Bitcoin is, how it works, and why it matters. Complete guide for cryptocurrency beginners.",
+    "keywords": ["Bitcoin", "cryptocurrency", "digital money", "blockchain", "BTC"]
+  },
+  {
+    "id": "ethereum-guide",
+    "title": "Ethereum Explained",
+    "difficulty": "Beginner",
+    "icon": "bi-diamond",
+    "readTime": "6 min",
+    "popular": true,
+    "excerpt": "Discover Ethereum, smart contracts, and decentralized applications. The platform powering most DeFi and NFT projects.",
+    "keywords": ["Ethereum", "ETH", "smart contracts", "DApps", "Web3"]
+  },
+  {
+    "id": "how-to-buy-crypto",
+    "title": "How to Buy Crypto",
+    "difficulty": "Beginner",
+    "icon": "bi-cart-plus",
+    "readTime": "7 min",
+    "popular": true,
+    "excerpt": "Step-by-step guide to buying your first cryptocurrency safely. From choosing exchanges to secure storage.",
+    "keywords": ["buy cryptocurrency", "crypto exchange", "Bitcoin purchase", "crypto wallet"]
+  },
+  {
+    "id": "crypto-wallet-security",
+    "title": "Wallet Security",
+    "difficulty": "Intermediate",
+    "icon": "bi-shield-lock",
+    "readTime": "8 min",
+    "popular": true,
+    "excerpt": "Protect your crypto assets with proper wallet security. Hardware wallets, seed phrases, and best practices.",
+    "keywords": ["crypto wallet security", "hardware wallet", "seed phrase", "cryptocurrency safety"]
+  },
+  {
+    "id": "understanding-blockchain",
+    "title": "Blockchain Technology",
+    "difficulty": "Intermediate",
+    "icon": "bi-diagram-3",
+    "readTime": "7 min",
+    "popular": true,
+    "excerpt": "The technology behind cryptocurrencies explained simply. How blocks, hashing, and consensus work together.",
+    "keywords": ["blockchain technology", "distributed ledger", "cryptocurrency technology", "consensus"]
+  },
+  {
+    "id": "defi-explained",
+    "title": "DeFi Explained",
+    "difficulty": "Advanced",
+    "icon": "bi-bank",
+    "readTime": "9 min",
+    "popular": false,
+    "excerpt": "Complete guide to DeFi protocols, yield farming, liquidity pools, and how decentralized finance is reshaping banking.",
+    "keywords": ["DeFi", "decentralized finance", "yield farming", "liquidity pools", "smart contracts"]
+  },
+  {
+    "id": "market-cap-guide",
+    "title": "Market Cap Guide",
+    "difficulty": "Beginner",
+    "icon": "bi-pie-chart",
+    "readTime": "6 min",
+    "popular": false,
+    "excerpt": "Learn how cryptocurrency market capitalization works, why it matters for investing, and how to compare projects.",
+    "keywords": ["market cap", "cryptocurrency valuation", "market capitalization", "crypto investing"]
+  },
+  {
+    "id": "crypto-trading-volume",
+    "title": "Trading Volume",
+    "difficulty": "Intermediate",
+    "icon": "bi-bar-chart",
+    "readTime": "7 min",
+    "popular": false,
+    "excerpt": "Learn to analyze cryptocurrency trading volume, understand liquidity patterns, and use volume indicators.",
+    "keywords": ["crypto trading volume", "market liquidity", "volume analysis", "trading activity"]
+  },
+  {
+    "id": "staking-rewards",
+    "title": "Staking Rewards",
+    "difficulty": "Intermediate",
+    "icon": "bi-award",
+    "readTime": "8 min",
+    "popular": false,
+    "excerpt": "Learn how cryptocurrency staking works, earn passive income, and understand proof-of-stake risks and rewards.",
+    "keywords": ["staking rewards", "proof of stake", "passive income", "cryptocurrency staking"]
+  },
+  {
+    "id": "nft-marketplace",
+    "title": "NFT Basics",
+    "difficulty": "Beginner",
+    "icon": "bi-image",
+    "readTime": "8 min",
+    "popular": false,
+    "excerpt": "Complete guide to NFTs and digital marketplaces. Learn about non-fungible tokens and digital ownership.",
+    "keywords": ["NFT", "non-fungible tokens", "NFT marketplace", "digital ownership", "crypto art"]
+  },
+  {
+    "id": "crypto-tax-guide",
+    "title": "Crypto Taxes",
+    "difficulty": "Advanced",
+    "icon": "bi-calculator",
+    "readTime": "11 min",
+    "popular": false,
+    "excerpt": "Master cryptocurrency tax obligations, reporting requirements, and optimization strategies.",
+    "keywords": ["crypto tax", "cryptocurrency taxes", "crypto tax reporting", "digital asset taxes"]
+  },
+  {
+    "id": "altcoin-analysis",
+    "title": "Altcoin Analysis",
+    "difficulty": "Advanced",
+    "icon": "bi-search",
+    "readTime": "8 min",
+    "popular": false,
+    "excerpt": "Master altcoin research. Learn to evaluate new cryptocurrencies and spot opportunities.",
+    "keywords": ["altcoin analysis", "cryptocurrency research", "altcoin investing", "crypto evaluation"]
+  },
+  {
+    "id": "smart-contracts",
+    "title": "Smart Contracts",
+    "difficulty": "Advanced",
+    "icon": "bi-file-earmark-code",
+    "readTime": "7 min",
+    "popular": false,
+    "excerpt": "Learn how smart contracts work and why they are revolutionizing business automation on blockchain networks.",
+    "keywords": ["smart contracts", "blockchain automation", "Ethereum contracts", "DApps"]
+  },
+  {
+    "id": "crypto-mining",
+    "title": "Crypto Mining",
+    "difficulty": "Intermediate",
+    "icon": "bi-cpu",
+    "readTime": "9 min",
+    "popular": false,
+    "excerpt": "Learn how cryptocurrency mining works, profitability factors, and whether mining is right for you.",
+    "keywords": ["crypto mining", "Bitcoin mining", "cryptocurrency mining", "mining profitability"]
+  },
+  {
+    "id": "yield-farming",
+    "title": "Yield Farming",
+    "difficulty": "Advanced",
+    "icon": "bi-tree",
+    "readTime": "9 min",
+    "popular": false,
+    "excerpt": "Learn yield farming strategies, liquidity mining, and how to maximize DeFi returns while managing risks.",
+    "keywords": ["yield farming", "liquidity mining", "DeFi yields", "cryptocurrency farming"]
+  },
+  {
+    "id": "crypto-portfolio",
+    "title": "Portfolio Management",
+    "difficulty": "Intermediate",
+    "icon": "bi-briefcase",
+    "readTime": "10 min",
+    "popular": false,
+    "excerpt": "Learn professional cryptocurrency portfolio management techniques, allocation strategies, and risk management.",
+    "keywords": ["crypto portfolio", "cryptocurrency allocation", "portfolio management", "crypto investing"]
+  },
+  {
+    "id": "bull-bear-markets",
+    "title": "Bull vs Bear Markets",
+    "difficulty": "Beginner",
+    "icon": "bi-graph-up-arrow",
+    "readTime": "8 min",
+    "popular": false,
+    "excerpt": "Learn to identify market phases and develop cycle-appropriate investment strategies for crypto markets.",
+    "keywords": ["bull market", "bear market", "crypto cycles", "market sentiment", "cryptocurrency investing"]
+  },
+  {
+    "id": "crypto-exchanges",
+    "title": "Crypto Exchanges",
+    "difficulty": "Beginner",
+    "icon": "bi-arrow-left-right",
+    "readTime": "8 min",
+    "popular": false,
+    "excerpt": "Learn about different cryptocurrency exchanges and how to trade safely on digital asset platforms.",
+    "keywords": ["crypto exchange", "cryptocurrency trading", "CEX", "DEX", "trading platform"]
+  },
+  {
+    "id": "cold-storage",
+    "title": "Cold Storage",
+    "difficulty": "Intermediate",
+    "icon": "bi-safe",
+    "readTime": "9 min",
+    "popular": false,
+    "excerpt": "Master cold storage techniques to protect cryptocurrency from hackers. Hardware wallets and offline security.",
+    "keywords": ["cold storage", "cryptocurrency security", "hardware wallet", "offline storage"]
+  },
+  {
+    "id": "crypto-regulations",
+    "title": "Crypto Regulations",
+    "difficulty": "Advanced",
+    "icon": "bi-journal-text",
+    "readTime": "10 min",
+    "popular": false,
+    "excerpt": "Navigate cryptocurrency regulations worldwide. Understand compliance requirements and legal obligations.",
+    "keywords": ["crypto regulations", "cryptocurrency law", "crypto compliance", "digital asset regulations"]
+  }
+]

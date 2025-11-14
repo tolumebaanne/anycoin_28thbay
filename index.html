@@ -1,0 +1,811 @@
+<!--
+================================================================================
+   AnywhereCoin - Live Cryptocurrency Price Platform
+   
+   Creator: Toluwalase Mebaanne
+   Company: 28th Bay Digital
+   Version: 1.0.0
+   License: Proprietary
+   
+   PLATFORM OVERVIEW:
+   AnywhereCoin provides real-time cryptocurrency market data with automatic
+   region detection and local currency conversion. Built for global accessibility
+   with offline-first architecture and educational resources.
+   
+   CORE FEATURES:
+   ✓ Live crypto prices updated every 5 minutes
+   ✓ Automatic region detection and currency localization
+   ✓ 18 supported fiat currencies (USD, EUR, GBP, CAD, NGN, JPY, etc.)
+   ✓ Interactive market data table with sorting and filtering
+   ✓ Real-time trending coins and market analysis
+   ✓ Price alert system with browser notifications
+   ✓ Offline snapshot functionality for poor connections
+   ✓ Educational guide system with 20+ cryptocurrency tutorials
+   ✓ Responsive design optimized for all device types
+   ✓ Professional advertising system with dynamic content rotation
+   ✓ Search functionality across 250+ cryptocurrencies
+   ✓ Modal coin detail views with comprehensive market data
+   
+   TECHNICAL SPECIFICATIONS:
+   - Frontend: Vanilla JavaScript ES6+, Bootstrap 5.3.3
+   - APIs: CoinGecko (market data), CryptoCompare (news), IPWho (geolocation)
+   - Storage: LocalStorage snapshots, Cookie preferences
+   - Performance: 5-minute auto-refresh, request timeout handling
+   - Security: XSS protection, input sanitization, HTTPS enforcement
+   - Accessibility: WCAG 2.1 compliant, screen reader support
+   - SEO: Structured data, dynamic meta tags, semantic HTML
+   
+   ARCHITECTURE:
+   - Modular JavaScript with separation of concerns
+   - Event-driven updates with state management
+   - Progressive enhancement with offline fallbacks
+   - Responsive CSS Grid and Flexbox layouts
+   - Dynamic content loading with error handling
+   
+   BROWSER SUPPORT:
+   - Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
+   - Mobile browsers: iOS Safari 14+, Chrome Mobile 90+
+   - Graceful degradation for older browsers
+   
+   PERFORMANCE OPTIMIZATIONS:
+   - Lazy loading for images and non-critical content
+   - Local data caching for reduced API calls
+   - Debounced search and resize event handlers
+   - Efficient DOM manipulation and minimal reflows
+   - Compressed assets and optimized delivery
+   
+   PRIVACY & COMPLIANCE:
+   - No user registration or personal data collection
+   - Local storage only for preferences and cache
+   - Cookie usage limited to essential functionality
+   - GDPR compliant with transparent data practices
+   - Regional currency detection without tracking
+   
+   Copyright © 2025 Toluwalase Mebaanne / 28th Bay Digital
+   All rights reserved. Educational content only, not financial advice.
+   
+   Built with attention to detail for the global cryptocurrency community.
+================================================================================
+-->
+
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head>
+  <!-- =============== META TAGS & BASIC SETUP =============== -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AnywhereCoin | Live Crypto Prices in Your Currency</title>
+  <meta name="description" content="AnywhereCoin shows live crypto prices in your local currency. Region aware by default. Updates every five minutes. No sign up.">
+  <meta name="robots" content="index, follow">
+  
+  
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SLKEK3JW6E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SLKEK3JW6E');
+</script>
+
+  
+  <link rel="canonical" href="https://ac.28thbaydigital.com/">
+
+  <!-- =============== SOCIAL META TAGS =============== -->
+  <!-- Open Graph -->
+  <meta property="og:title" content="AnywhereCoin | Live Crypto Prices in Your Currency">
+  <meta property="og:description" content="Region aware crypto prices with five minute updates and a safe offline snapshot.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ac.28thbaydigital.com/">
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='100%25' height='100%25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='64' fill='%23000000'%3EAnywhereCoin%3C/text%3E%3C/svg%3E">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AnywhereCoin | Live Crypto Prices in Your Currency">
+  <meta name="twitter:description" content="Region aware crypto prices with five minute updates and a safe offline snapshot.">
+  <meta name="twitter:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='100%25' height='100%25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='64' fill='%23000000'%3EAnywhereCoin%3C/text%3E%3C/svg%3E'>
+
+  <!-- =============== FAVICON =============== -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%23000000%27/%3E%3Ctext x=%2732%27 y=%2738%27 text-anchor=%27middle%27 font-size=%2730%27 fill=%27%23ffffff%27%3EAC%3C/text%3E%3C/svg%3E">
+
+  <!-- =============== EXTERNAL STYLESHEETS =============== -->
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Main Site CSS -->
+  <link href="styles.css" rel="stylesheet">
+  <!-- MODULAR AD SYSTEM CSS -->
+  <link href="ads/ad-styles.css" rel="stylesheet">
+  <!-- GUIDES SYSTEM CSS -->
+  <link href="guides/guides.css" rel="stylesheet">
+
+  <!-- =============== STRUCTURED DATA =============== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "28th Bay Digital",
+        "url": "https://28thbaydigital.com",
+        "logo": "https://28thbaydigital.com/logo.png",
+        "sameAs": []
+      },
+      {
+        "@type": "WebSite",
+        "name": "AnywhereCoin",
+        "url": "https://ac.28thbaydigital.com",
+        "publisher": { "@id": "https://28thbaydigital.com#org" }
+      },
+      {
+        "@type": "Dataset",
+        "name": "Live Cryptocurrency Prices",
+        "description": "Real-time cryptocurrency market data",
+        "keywords": ["Bitcoin price", "Ethereum price", "crypto market cap", "cryptocurrency trading volume"],
+        "temporalCoverage": "2024/..",
+        "spatialCoverage": "Global"
+      }
+    ]
+  }
+  </script>
+
+  <!-- =============== CUSTOM STYLES FOR IMAGES =============== -->
+  <style>
+    .hero-with-image {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)), url('shared/img/crypto-02.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .subscribe-section {
+      background: linear-gradient(135deg, rgba(248, 250, 252, 0.95), rgba(226, 232, 240, 0.95)), url('shared/img/crypto-05.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .about-image-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    .feature-item {
+      text-align: center;
+      padding: 1.5rem;
+    }
+    .feature-icon {
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- =============== ACCESSIBILITY SKIP LINK =============== -->
+  <a class="visually-hidden-focusable position-absolute top-0 start-0 p-2 m-2 bg-light rounded shadow" href="#main" id="skip">Skip to content</a>
+
+  <!-- =============== HEADER SECTION =============== -->
+  <header class="border-bottom" role="banner">
+    <!-- Main Navigation Bar -->
+    <nav class="navbar navbar-expand-lg container" aria-label="Main navigation">
+      <!-- Brand Logo -->
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#" aria-label="AnywhereCoin home">
+        <span class="rounded-3 d-inline-block brand-dot" aria-hidden="true"></span>
+        <strong>AnywhereCoin</strong>
+      </a>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation Menu Content -->
+      <div id="navMenu" class="collapse navbar-collapse">
+        <!-- Main Navigation Links -->
+        <ul class="navbar-nav me-3">
+          <li class="nav-item"><a class="nav-link" href="#market">Market</a></li>
+          <li class="nav-item"><a class="nav-link" href="#trending">Trending</a></li>
+          <li class="nav-item"><a class="nav-link" href="#learn">Learn</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog/">Guides</a></li>
+          <li class="nav-item"><a class="nav-link" href="#subscribe">Subscribe</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        </ul>
+
+        <!-- Search Section -->
+        <div class="ms-auto w-50">
+          <div class="input-group" role="search" aria-label="Search coins">
+            <span class="input-group-text" id="searchIcon">
+              <i class="bi bi-search" aria-hidden="true"></i>
+            </span>
+            <input id="searchInput" type="search" class="form-control" placeholder="Search name or symbol" aria-label="Search by coin name or symbol" autocomplete="off">
+            <button id="searchGo" class="btn btn-outline-secondary" type="button" aria-label="Run search">
+              <i class="bi bi-arrow-return-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Theme Toggle -->
+        <div class="ms-3">
+          <button id="themeToggle" class="btn btn-outline-secondary" type="button" aria-label="Toggle theme">
+            <i class="bi bi-moon-stars" aria-hidden="true"></i>
+            <span class="d-none d-sm-inline">Theme</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header Advertisement Banner (Horizontal) -->
+    <div class="container py-3" aria-label="Advertisement">
+      <div id="ad-leaderboard" class="dynamic-ad-container"></div>
+    </div>
+  </header>
+
+  <!-- =============== MAIN CONTENT AREA =============== -->
+  <main id="main" tabindex="-1">
+    
+    <!-- =============== ENHANCED HERO SECTION WITH IMAGE =============== -->
+    <section class="hero hero-with-image position-relative overflow-hidden text-white">
+      <div class="container h-100">
+        <div class="row align-items-center h-100 g-4">
+          <!-- Hero Text Content -->
+          <div class="col-lg-7">
+            <h1 class="display-4 fw-bold mb-3">Live crypto prices in your currency</h1>
+            <p class="lead mb-4 hero-sub">
+              AnywhereCoin detects your region and shows prices in your local currency. Data refreshes every five minutes. If your connection drops, a safe snapshot keeps numbers on screen.
+            </p>
+            <!-- Feature List -->
+            <ul class="list-unstyled small mb-4" style="color: rgba(255,255,255,0.9);">
+              <li class="mb-1"><i class="bi bi-check2-circle me-2" aria-hidden="true"></i>No sign up</li>
+              <li class="mb-1"><i class="bi bi-check2-circle me-2" aria-hidden="true"></i>Region aware currency</li>
+              <li class="mb-1"><i class="bi bi-check2-circle me-2" aria-hidden="true"></i>Fast and lightweight</li>
+            </ul>
+            <!-- Call to Action -->
+            <a href="#market" class="btn btn-light btn-lg shadow-sm">View market</a>
+          </div>
+          
+          <!-- Hero Illustration with Overlay -->
+          <div class="col-lg-5">
+            <div class="position-relative">
+              <img src="shared/img/crypto-08.jpg" alt="Cryptocurrency trading interface" class="img-fluid rounded-4 shadow-lg" style="opacity: 0.9;">
+              <div class="position-absolute top-0 start-0 w-100 h-100 rounded-4" style="background: linear-gradient(45deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Background Decoration -->
+      <div class="hero-blob" aria-hidden="true"></div>
+      <div class="hero-blob-top" aria-hidden="true"></div>
+    </section>
+
+    <!-- =============== MARKET DATA SECTION =============== -->
+    <section id="market" class="py-5 border-top">
+      <div class="container">
+        <div class="row g-4">
+          
+          <!-- Main Market Table Column -->
+          <div class="col-lg-9">
+            <!-- Market Header with Controls -->
+            <div class="d-flex align-items-end justify-content-between mb-3">
+              <div>
+                <h2 class="h3 mb-1">Market overview</h2>
+                <p class="small text-muted mb-0">Prices refresh every five minutes. Last update <span id="lastUpdate" aria-live="polite">pending</span>.</p>
+              </div>
+              <!-- Market Control Panel -->
+              <div class="d-flex align-items-center gap-2">
+                <select id="currencySelect" class="form-select" aria-label="Select currency">
+                  <option value="usd" selected>USD</option>
+                  <option value="cad">CAD</option>
+                  <option value="ngn">NGN</option>
+                  <option value="gbp">GBP</option>
+                  <option value="eur">EUR</option>
+                </select>
+                <button id="refreshBtn" class="btn btn-outline-secondary" type="button" aria-label="Refresh data">
+                  <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
+                  <span class="d-none d-sm-inline"></span>
+                </button>
+                <span class="badge text-bg-light" id="currencyBadge" aria-live="polite">Currency: USD</span>
+              </div>
+            </div>
+
+            <!-- Market Data Table -->
+            <div class="card shadow-sm">
+              <div class="card-body p-0">
+                <div class="table-responsive" aria-label="Top coins by market cap">
+                  <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                      <tr>
+                        <th scope="col">Rank</th>
+                        <th scope="col">Coin</th>
+                        <th scope="col">Price <i class="bi bi-bell text-muted" style="font-size: 0.8rem;" title="Set price alerts"></i></th>
+                        <th scope="col">1 hour</th>
+                        <th scope="col">24 hours</th>
+                        <th scope="col">7 days</th>
+                        <th scope="col">Market cap</th>
+                        <th scope="col">Volume day</th>
+                      </tr>
+                    </thead>
+                    <tbody id="coinsBody">
+                      <!-- Loading State -->
+                      <tr>
+                        <td colspan="8" class="text-center py-5">
+                          <div class="spinner-border me-2" role="status" aria-hidden="true"></div>
+                          <span class="visually-hidden">Loading</span>
+                          <span>Loading live data</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar: Trending and Square Ad -->
+          <aside class="col-lg-3" aria-label="Sidebar">
+            
+            <!-- Trending Coins Card -->
+            <div class="card shadow-sm mb-3">
+              <!-- Trending Header with Smart Buttons -->
+              <div class="card-header bg-white">
+                <h3 class="h6 mb-0">Trending today</h3>
+                <!-- Square Smart Buttons -->
+                <div class="trending-smart-buttons">
+                  <div class="row g-1">
+                    <div class="col-4">
+                      <button class="btn smart-btn w-100" data-smart="gainers" title="Top gainers (24h)">
+                        <i class="bi bi-arrow-up-circle"></i>
+                        <span>Top<br>Gainers</span>
+                      </button>
+                    </div>
+                    <div class="col-4">
+                      <button class="btn smart-btn w-100" data-smart="losers" title="Top losers (24h)">
+                        <i class="bi bi-arrow-down-circle"></i>
+                        <span>Top<br>Losers</span>
+                      </button>
+                    </div>
+                    <div class="col-4">
+                      <button class="btn smart-btn w-100" data-smart="volume" title="Highest volume">
+                        <i class="bi bi-bar-chart-line"></i>
+                        <span>High<br>Volume</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Trending Content -->
+              <div class="card-body" id="trendingBox">
+                <p class="text-muted small mb-0">Loading trending coins</p>
+              </div>
+            </div>
+
+            <!-- Square Advertisement (Dynamic) -->
+            <div id="ad-rectangle" class="dynamic-ad-container"></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== CRYPTO CAROUSEL SECTION =============== -->
+    <section id="crypto-carousel" class="py-5 border-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="h3 text-center mb-4">Live Market Highlights</h2>
+            <!-- Cryptocurrency Data Carousel -->
+            <div id="cryptoCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+              <div class="carousel-inner" id="carouselContent">
+                <!-- Dynamic content populated by JavaScript -->
+                <div class="carousel-item active">
+                  <div class="text-center py-4">
+                    <div class="spinner-border" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Carousel Navigation Controls -->
+              <button class="carousel-control-prev" type="button" data-bs-target="#cryptoCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#cryptoCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== CRYPTO NEWS SECTION =============== -->
+    <section id="crypto-news" class="py-5 border-top bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="h3 text-center mb-4">Latest Crypto News</h2>
+            <div id="newsContainer" class="row g-4">
+              <!-- Dynamic news content will be loaded here -->
+              <div class="col-12 text-center py-4">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading news...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== MARKET ANALYSIS SECTION =============== -->
+    <section id="market-analysis" class="py-5 border-top">
+      <div class="container">
+        <div class="row align-items-center mb-5">
+          <div class="col-lg-6">
+            <h2 class="h3 mb-4">Market Analysis</h2>
+            <p class="lead text-muted">Professional insights and real-time market data to help you make informed decisions in the cryptocurrency market.</p>
+          </div>
+          <div class="col-lg-6">
+            <img src="shared/img/crypto-17.jpg" alt="Professional crypto market analysis" class="img-fluid rounded-3 shadow">
+          </div>
+        </div>
+        <div id="analysisContainer" class="row g-4">
+          <!-- Dynamic analysis content will be loaded here -->
+          <div class="col-12 text-center py-4">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading analysis...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== LEARN THE BASICS SECTION =============== -->
+    <section id="learn" class="py-5 border-top">
+      <div class="container">
+        <!-- This will be enhanced by guides.js -->
+        <div class="row g-4">
+          <!-- Section Header -->
+          <div class="col-lg-4">
+            <h2 class="h3">Learn the basics</h2>
+            <p class="text-muted">Short notes that make the table easy to read.</p>
+          </div>
+          
+          <!-- Learning Cards Grid -->
+          <div class="col-lg-8">
+            <div class="row g-3">
+              <!-- Market Cap Card -->
+              <div class="col-md-6">
+                <div class="learn-card p-3 border rounded-3 bg-body shadow-sm h-100">
+                  <h3 class="h6"><i class="bi bi-bar-chart-fill me-2" aria-hidden="true"></i>Market cap</h3>
+                  <p class="mb-0 small text-muted">Price multiplied by supply. A quick sense of size. It does not predict the future.</p>
+                </div>
+              </div>
+              
+              <!-- Volume Card -->
+              <div class="col-md-6">
+                <div class="learn-card p-3 border rounded-3 bg-body shadow-sm h-100">
+                  <h3 class="h6"><i class="bi bi-graph-up-arrow me-2" aria-hidden="true"></i>Volume day</h3>
+                  <p class="mb-0 small text-muted">How much changed hands in the past day. High volume can signal strong interest.</p>
+                </div>
+              </div>
+              
+              <!-- Price Change Card -->
+              <div class="col-md-6">
+                <div class="learn-card p-3 border rounded-3 bg-body shadow-sm h-100">
+                  <h3 class="h6"><i class="bi bi-clock-history me-2" aria-hidden="true"></i>Price change</h3>
+                  <p class="mb-0 small text-muted">We show one hour, twenty four hours, and seven days. Green means up. Red means down.</p>
+                </div>
+              </div>
+              
+              <!-- Risk Warning Card -->
+              <div class="col-md-6">
+                <div class="learn-card p-3 border rounded-3 bg-body shadow-sm h-100">
+                  <h3 class="h6"><i class="bi bi-shield-check me-2" aria-hidden="true"></i>Note of care</h3>
+                  <p class="mb-0 small text-muted">This site is for general info. Please do your own research before you act on any data.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== EMAIL SUBSCRIPTION SECTION (ENHANCED WITH IMAGE) =============== -->
+    <section id="subscribe" class="subscribe-section py-5 border-top" style="min-height: 70vh; display: flex; align-items: center;">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <!-- Subscription Content -->
+          <div class="col-lg-6">
+            <div class="pe-lg-4">
+              <h2 class="display-5 fw-bold mb-4">Stay informed with crypto insights</h2>
+              <p class="lead text-muted mb-4">
+                Get curated market updates and educational content delivered to your inbox. We send carefully crafted insights at most once or twice per week.
+              </p>
+              
+              <!-- Feature Benefits -->
+              <div class="row g-3 mb-4">
+                <div class="col-sm-6">
+                  <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-envelope-check text-primary fs-5"></i>
+                    <span class="small fw-semibold">Weekly market insights</span>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-mortarboard text-primary fs-5"></i>
+                    <span class="small fw-semibold">Educational content</span>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-shield-check text-primary fs-5"></i>
+                    <span class="small fw-semibold">No spam, ever</span>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-x-circle text-primary fs-5"></i>
+                    <span class="small fw-semibold">Unsubscribe anytime</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Privacy Notice -->
+              <div class="p-3 border rounded-3 bg-white shadow-sm">
+                <div class="small text-muted">
+                  <i class="bi bi-info-circle me-2"></i>
+                  <strong>Privacy commitment:</strong> Your email is used exclusively for market updates and educational content. We never share your information with third parties or use it for any other purpose. You can unsubscribe with one click at any time.
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Subscription Form Area -->
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-lg">
+              <div class="card-body p-4">
+                <div class="text-center mb-4">
+                  <h3 class="h5 mb-2">Join thousands of crypto enthusiasts</h3>
+                  <p class="small text-muted mb-0">Get started with our free newsletter</p>
+                </div>
+                
+                <!-- MailerLite Form Integration -->
+                <div class="ml-embedded" data-form="HFntQC"></div>
+                
+                <!-- Additional Trust Signals -->
+                <div class="text-center mt-3">
+                  <small class="text-muted">
+                    <i class="bi bi-people me-1"></i>
+                    Join 5,000+ subscribers getting crypto insights
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== ABOUT SECTION (ENHANCED WITH IMAGES) =============== -->
+    <section id="about" class="py-5 border-top" style="min-height: 80vh; display: flex; align-items: center;">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <!-- About Content -->
+          <div class="col-lg-6">
+            <div class="pe-lg-4">
+              <h2 class="display-5 fw-bold mb-4">Built for crypto enthusiasts worldwide</h2>
+              <p class="lead text-muted mb-4">
+                AnywhereCoin is a professional cryptocurrency tracking platform designed by 28th Bay Digital. We believe that accurate, real-time pricing information should be accessible to everyone, anywhere in the world.
+              </p>
+              
+              <!-- Core Features -->
+              <div class="row g-4 mb-4">
+                <div class="col-sm-6">
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <i class="bi bi-globe text-primary fs-4"></i>
+                    </div>
+                    <h4 class="h6 mb-2">Region Aware</h4>
+                    <p class="small text-muted mb-0">Automatically detects your location and displays prices in your local currency</p>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <i class="bi bi-lightning text-primary fs-4"></i>
+                    </div>
+                    <h4 class="h6 mb-2">Real-Time Data</h4>
+                    <p class="small text-muted mb-0">Live price updates every five minutes from reliable cryptocurrency data sources</p>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <i class="bi bi-shield-lock text-primary fs-4"></i>
+                    </div>
+                    <h4 class="h6 mb-2">Privacy First</h4>
+                    <p class="small text-muted mb-0">No sign-up required. All data stored locally on your device for maximum privacy</p>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <i class="bi bi-mortarboard text-primary fs-4"></i>
+                    </div>
+                    <h4 class="h6 mb-2">Educational</h4>
+                    <p class="small text-muted mb-0">Comprehensive guides covering everything from Bitcoin basics to advanced trading</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Call to Action -->
+              <div class="d-flex gap-3">
+                <a href="blog/" class="btn btn-primary">Explore Guides</a>
+                <a href="#market" class="btn btn-outline-primary">View Live Prices</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- About Illustration -->
+          <div class="col-lg-6">
+            <div class="about-image-container">
+              <img src="shared/img/crypto-01.jpg" alt="Cryptocurrency investment analysis" class="img-fluid">
+              <div class="position-absolute bottom-0 start-0 p-4 text-white" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                <h5 class="mb-2">Professional Analysis</h5>
+                <p class="small mb-0">Research-driven insights for informed cryptocurrency investment decisions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Privacy and Technical Details with Visual Elements -->
+<div class="row g-4 mt-5 pt-5 border-top">
+  <div class="col-lg-4">
+    <div class="text-center">
+      <div class="mb-3">
+        <img src="shared/img/crypto-04.jpg" alt="Bitcoin with Euro currency" class="img-fluid" style="height: 80px; width: 80px; object-fit: cover; border-radius: 1rem;">
+      </div>
+      <h4 class="h6 mb-2">Multi-Currency Support</h4>
+      <p class="small text-muted">View prices in 15+ currencies including USD, EUR, GBP, CAD, and NGN. Automatic region detection sets your local currency.</p>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="text-center">
+      <div class="mb-3">
+        <img src="shared/img/crypto-13.jpg" alt="Crypto portfolio tracking" class="img-fluid" style="height: 80px; width: 80px; object-fit: cover; border-radius: 1rem;">
+      </div>
+      <h4 class="h6 mb-2">250+ Cryptocurrencies</h4>
+      <p class="small text-muted">Track Bitcoin, Ethereum, and top altcoins with live price alerts, market cap rankings, and trading volume data.</p>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="text-center">
+      <div class="mb-3">
+        <img src="shared/img/crypto-16.jpg" alt="Hands exchanging Bitcoin" class="img-fluid" style="height: 80px; width: 80px; object-fit: cover; border-radius: 1rem;">
+      </div>
+      <h4 class="h6 mb-2">Complete Learning Hub</h4>
+      <p class="small text-muted">20+ comprehensive guides covering Bitcoin basics, trading strategies, DeFi, and advanced crypto concepts.</p>
+    </div>
+  </div>
+</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =============== FOOTER SECTION =============== -->
+  <footer class="border-top pt-4">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Footer Navigation and Copyright -->
+        <div class="col-lg-8">
+          <nav aria-label="Footer">
+            <ul class="list-inline mb-2">
+              <li class="list-inline-item"><a href="#market">Market</a></li>
+              <li class="list-inline-item"><a href="#trending">Trending</a></li>
+              <li class="list-inline-item"><a href="#learn">Learn</a></li>
+              <li class="list-inline-item"><a href="blog/">Guides</a></li>
+              <li class="list-inline-item"><a href="#subscribe">Subscribe</a></li>
+              <li class="list-inline-item"><a href="#about">About</a></li>
+            </ul>
+          </nav>
+          <p class="small text-muted mb-0">© <span id="year"></span> 28th Bay Digital. All rights reserved.</p>
+        </div>
+      
+        <!-- Footer Advertisement (Horizontal) -->
+        <div class="col-lg-4">
+          <div id="ad-footer" class="dynamic-ad-container"></div>
+        </div>
+      </div>
+      <div class="py-3"></div>
+    </div>
+  </footer>
+
+  <!-- =============== ACCESSIBILITY & UTILITY ELEMENTS =============== -->
+  <div id="liveRegion" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- =============== MODAL DIALOGS =============== -->
+  
+  <!-- Price Alert Modal -->
+  <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="alertModalLabel">Set Price Alert</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Coin</label>
+            <input type="text" id="alertCoin" class="form-control" readonly>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Target Price</label>
+            <input type="number" id="alertPrice" class="form-control" step="0.01" placeholder="Enter target price">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="saveAlert" class="btn btn-primary">Save Alert</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Region Selection Modal -->
+  <div class="modal fade" id="regionModal" tabindex="-1" aria-labelledby="regionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="regionModalLabel">Choose your currency</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="regionClose"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-3" id="regionMessage">We guessed your region. Confirm or choose another currency.</p>
+          <div class="mb-3">
+            <label for="regionCurrencySelect" class="form-label">Currency</label>
+            <select id="regionCurrencySelect" class="form-select" aria-label="Region currency selection">
+              <option value="usd">USD</option>
+              <option value="cad">CAD</option>
+              <option value="ngn">NGN</option>
+              <option value="gbp">GBP</option>
+              <option value="eur">EUR</option>
+            </select>
+          </div>
+          <p class="small text-muted mb-0">Your choice is saved on your device so you do not have to pick again.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="regionSaveBtn" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============== JAVASCRIPT LIBRARIES =============== -->
+  <!-- jQuery and Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- =============== APPLICATION JAVASCRIPT =============== -->
+  <!-- MODULAR AD SYSTEM JS (MUST LOAD BEFORE MAIN APP) -->
+  <script src="ads/ad-system.js"></script>
+  <!-- SHARED FUNCTIONS -->
+  <script src="shared/functions.js"></script>
+  <!-- GUIDES SYSTEM -->
+  <script src="guides/guides.js"></script>
+  <!-- Main Application JS -->
+  <script src="app.js" defer></script>
+
+  <!-- MailerLite Universal -->
+  <script>
+      (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+      .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+      n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+      (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+      ml('account', '1757186');
+  </script>
+  <!-- End MailerLite Universal -->
+
+</body>
+</html>

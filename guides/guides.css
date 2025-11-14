@@ -1,0 +1,294 @@
+/*
+================================================================================
+   AnywhereCoin - Educational Guide System Styles
+   
+   Creator: Toluwalase Mebaanne
+   Company: 28th Bay Digital
+   
+   STYLESHEET PURPOSE:
+   Specialized styling for cryptocurrency educational guide system with focus
+   on readability, accessibility, and seamless integration with main platform
+   design language and user experience patterns.
+   
+   DESIGN PRINCIPLES:
+   - Typography optimized for long-form educational content
+   - Interactive elements with clear affordance and feedback
+   - Responsive layout patterns supporting various content lengths
+   - Consistent visual hierarchy across all educational materials
+   - Accessibility compliance with WCAG 2.1 standards
+   
+   COMPONENT ARCHITECTURE:
+   - Guide card components for content discovery
+   - Template page layout for individual guide presentation
+   - Enhanced learn section integration with main site
+   - Dynamic content boxes with hover state animations
+   - Sidebar navigation with sticky positioning optimization
+   
+   Copyright © 2025 Toluwalase Mebaanne / 28th Bay Digital
+================================================================================
+*/
+
+/* ===============================================================================
+   GUIDE DISCOVERY CARDS
+   =============================================================================== */
+
+/* Interactive guide cards for main site content discovery */
+.guide-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.guide-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Guide icon container styling */
+.guide-icon {
+  text-align: center;
+}
+
+/* ===============================================================================
+   GUIDE TEMPLATE PAGE LAYOUT
+   =============================================================================== */
+
+/* Guide page header section styling */
+.guide-header {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 2rem;
+}
+
+/* Main content container optimization */
+.guide-content {
+  max-width: none;
+}
+
+/* Educational content typography */
+.guide-body {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #374151;
+}
+
+/* Content heading hierarchy */
+.guide-body h1,
+.guide-body h2,
+.guide-body h3 {
+  font-weight: 700;
+  color: #1e293b;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.guide-body h2 {
+  font-size: 1.75rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+.guide-body h3 {
+  font-size: 1.4rem;
+}
+
+/* Content body text styling */
+.guide-body p {
+  margin-bottom: 1.5rem;
+}
+
+.guide-body ul,
+.guide-body ol {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+
+.guide-body li {
+  margin-bottom: 0.5rem;
+}
+
+.guide-body strong {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.guide-body code {
+  background: #f1f5f9;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+}
+
+/* ===============================================================================
+   NAVIGATION SIDEBAR SYSTEM
+   =============================================================================== */
+
+/* Sticky sidebar positioning */
+.guide-sidebar {
+  position: sticky;
+  top: 2rem;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Sidebar navigation list styling */
+.guide-sidebar .list-group-item {
+  border: none;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f1f5f9;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.guide-sidebar .list-group-item:hover {
+  background: #f8fafc;
+  padding-left: 0.5rem;
+}
+
+/* Active navigation state */
+.guide-sidebar .list-group-item.active {
+  background: #eff6ff;
+  color: #1e40af;
+  font-weight: 600;
+}
+
+/* ===============================================================================
+   ENHANCED LEARN SECTION INTEGRATION
+   =============================================================================== */
+
+/* Main site learn section enhancement */
+.learn-enhanced {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  min-height: 70vh;
+  padding: 4rem 0;
+}
+
+/* Guide list container styling */
+.learn-guide-list {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+}
+
+/* Individual guide list item styling */
+.guide-list-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: #374151;
+  transition: all 0.2s ease;
+  margin-bottom: 0.5rem;
+}
+
+.guide-list-item:hover {
+  background: #f3f4f6;
+  color: #1e293b;
+  transform: translateX(5px);
+}
+
+/* Guide list icon styling */
+.guide-list-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.9rem;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+/* ===============================================================================
+   DYNAMIC CONTENT BOXES
+   =============================================================================== */
+
+/* Enhanced dynamic guide box styling */
+.learn-box-dynamic {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+}
+
+.learn-box-dynamic:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+
+/* Dynamic box icon styling */
+.learn-box-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Dynamic box content typography */
+.learn-box-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.learn-box-content {
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Box metadata information */
+.learn-box-meta {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1rem;
+}
+
+/* ===============================================================================
+   RESPONSIVE DESIGN OPTIMIZATION
+   =============================================================================== */
+
+/* Tablet screen adaptations (992px and down) */
+@media (max-width: 992px) {
+  .learn-enhanced {
+    padding: 3rem 0;
+  }
+  
+  .learn-guide-list {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Mobile screen adaptations (768px and down) */
+@media (max-width: 768px) {
+  .guide-body {
+    font-size: 1rem;
+  }
+  
+  .learn-box-dynamic {
+    padding: 1.5rem;
+  }
+  
+  .learn-box-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+}

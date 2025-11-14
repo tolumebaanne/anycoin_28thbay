@@ -1,0 +1,400 @@
+/*
+================================================================================
+   AnywhereCoin - Educational Hub Stylesheet
+   
+   Creator: Toluwalase Mebaanne
+   Company: 28th Bay Digital
+   
+   STYLESHEET PURPOSE:
+   Specialized styling for cryptocurrency educational hub with focus on
+   content discovery, learning path visualization, and user engagement
+   optimization across diverse educational materials.
+   
+   DESIGN PHILOSOPHY:
+   - Visual hierarchy supporting educational content consumption
+   - Interactive elements encouraging exploration and engagement
+   - Progressive disclosure patterns for complex information architecture
+   - Accessibility-first approach with reduced motion support
+   - Seamless integration with main platform design language
+   
+   COMPONENT SYSTEMS:
+   - Hero section with animated background elements
+   - Category-based learning path navigation cards
+   - Guide discovery cards with hover state animations
+   - Responsive statistics display components
+   - Accessibility enhancements for diverse user needs
+   
+   Copyright © 2025 Toluwalase Mebaanne / 28th Bay Digital
+================================================================================
+*/
+
+/* ===============================================================================
+   EDUCATIONAL HUB HERO SECTION
+   =============================================================================== */
+
+/* Primary hero section with gradient background and animation */
+.blog-hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background element for visual interest */
+.blog-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: heroFloat 20s ease-in-out infinite;
+}
+
+/* Educational platform statistics grid */
+.blog-hero-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* Individual statistic card styling */
+.stat-card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Statistic number display */
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+/* Statistic label text */
+.stat-label {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+  font-weight: 500;
+}
+
+/* ===============================================================================
+   LEARNING PATH CATEGORY CARDS
+   =============================================================================== */
+
+/* Interactive category card container */
+.category-card {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Background image overlay for visual context */
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.08;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+/* Category-specific background images */
+.category-card.beginner::before {
+  background-image: url('../shared/img/crypto-16.jpg');
+}
+
+.category-card.intermediate::before {
+  background-image: url('../shared/img/crypto-09.jpg');
+}
+
+.category-card.advanced::before {
+  background-image: url('../shared/img/crypto-18.jpg');
+}
+
+/* Ensure content appears above background image */
+.category-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Interactive hover state for category cards */
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Category icon styling with skill-level color coding */
+.category-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 1.5rem;
+  color: white;
+}
+
+/* Beginner level branding (green gradient) */
+.beginner .category-icon {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+/* Intermediate level branding (orange gradient) */
+.intermediate .category-icon {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+/* Advanced level branding (red gradient) */
+.advanced .category-icon {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+/* Category content typography */
+.category-card h3 {
+  color: #1e293b;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.category-card p {
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+/* ===============================================================================
+   EDUCATIONAL CONTENT DISCOVERY CARDS
+   =============================================================================== */
+
+/* Guide discovery card container */
+.guide-blog-card {
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Interactive hover state for guide cards */
+.guide-blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+
+/* Guide card header section */
+.guide-card-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Guide card content area */
+.guide-card-body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Guide title typography */
+.guide-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+/* Guide excerpt content */
+.guide-card-excerpt {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+/* Guide metadata information */
+.guide-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+/* Guide icon with gradient branding */
+.guide-card-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+/* ===============================================================================
+   NAVIGATION SIDEBAR COMPONENTS
+   =============================================================================== */
+
+/* Quick access navigation card */
+.quick-access-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Quick access card heading */
+.quick-access-card h4 {
+  color: #1e293b;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* ===============================================================================
+   USER INTERFACE ANIMATIONS
+   =============================================================================== */
+
+/* Hero section floating animation */
+@keyframes heroFloat {
+  0%, 100% { 
+    transform: translateX(0) translateY(0) rotate(0deg); 
+  }
+  33% { 
+    transform: translateX(30px) translateY(-30px) rotate(120deg); 
+  }
+  66% { 
+    transform: translateX(-20px) translateY(20px) rotate(240deg); 
+  }
+}
+
+/* Content reveal animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sequential animation application */
+.guide-blog-card,
+.category-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.guide-blog-card:nth-child(1) { animation-delay: 0.1s; }
+.guide-blog-card:nth-child(2) { animation-delay: 0.2s; }
+.guide-blog-card:nth-child(3) { animation-delay: 0.3s; }
+.guide-blog-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* ===============================================================================
+   RESPONSIVE DESIGN OPTIMIZATION
+   =============================================================================== */
+
+/* Tablet screen adaptations (992px and down) */
+@media (max-width: 992px) {
+  .blog-hero-stats {
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 2rem;
+  }
+  
+  .stat-card {
+    padding: 1rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  
+  .category-card {
+    padding: 2rem;
+  }
+}
+
+/* Mobile screen adaptations (768px and down) */
+@media (max-width: 768px) {
+  .blog-hero {
+    text-align: center;
+  }
+  
+  .blog-hero-stats {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .category-card {
+    padding: 1.5rem;
+  }
+  
+  .guide-card-body {
+    padding: 1rem;
+  }
+  
+  .guide-card-header {
+    padding: 1rem;
+  }
+}
+
+/* ===============================================================================
+   ACCESSIBILITY ENHANCEMENT
+   =============================================================================== */
+
+/* Reduced motion preferences support */
+@media (prefers-reduced-motion: reduce) {
+  .guide-blog-card,
+  .category-card,
+  .stat-card {
+    animation: none;
+    transition: none;
+  }
+  
+  .category-card:hover,
+  .guide-blog-card:hover {
+    transform: none;
+  }
+  
+  .blog-hero::before {
+    animation: none;
+  }
+}
+
+/* Keyboard navigation focus indicators */
+.guide-blog-card:focus,
+.category-card:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
